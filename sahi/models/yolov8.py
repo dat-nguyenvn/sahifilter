@@ -92,7 +92,7 @@ class Yolov8DetectionModel(DetectionModel):
 
     #     self._original_predictions = prediction_result
     #     self._original_shape = image.shape
-    def perform_inference(self, image: np.ndarray):
+    def perform_inference(self, image: np.ndarray,picked_class={20,22, 23,19,17}):
         """
         Prediction is performed using self.model and the prediction result is set to self._original_predictions.
         Filters predictions to include only zebra, giraffe, and elephant.
@@ -109,7 +109,7 @@ class Yolov8DetectionModel(DetectionModel):
             raise ValueError("Model is not loaded, load it by calling .load_model()")
 
         # Class IDs for zebra, giraffe, and elephant (adjust according to your dataset)
-        target_classes = {20,22, 23}  # Replace these with the actual class IDs for your model
+        target_classes = picked_class  # Replace these with the actual class IDs for your model
 
         kwargs = {"cfg": self.config_path, "verbose": False, "conf": self.confidence_threshold, "device": self.device}
 
