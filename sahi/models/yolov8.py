@@ -92,7 +92,7 @@ class Yolov8DetectionModel(DetectionModel):
 
     #     self._original_predictions = prediction_result
     #     self._original_shape = image.shape
-    def perform_inference(self, image: np.ndarray,picked_class={20,22, 23,19,17}):
+    def perform_inference(self, image: np.ndarray,picked_class={20,22, 23}): #[0,1,2,3,5,7]
         """
         Prediction is performed using self.model and the prediction result is set to self._original_predictions.
         Filters predictions to include only zebra, giraffe, and elephant.
